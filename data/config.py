@@ -54,7 +54,7 @@ COCO_LABEL_MAP = { 1:  1,  2:  2,  3:  3,  4:  4,  5:  5,  6:  6,  7:  7,  8:  8
                   74: 65, 75: 66, 76: 67, 77: 68, 78: 69, 79: 70, 80: 71, 81: 72,
                   82: 73, 84: 74, 85: 75, 86: 76, 87: 77, 88: 78, 89: 79, 90: 80}
 
-
+RGB_CLASSES = ('HTEL', 'Ni-Net', 'Steel')
 
 # ----------------------- CONFIG CLASS ----------------------- #
 
@@ -126,6 +126,19 @@ dataset_base = Config({
     # provide a map from category_id -> index in class_names + 1 (the +1 is there because it's 1-indexed).
     # If not specified, this just assumes category ids start at 1 and increase sequentially.
     'label_map': None
+})
+
+my_custom_dataset = dataset_base.copy({
+    'name': 'RGB Dataset',
+
+    'train_images': '/content/yolact/RGBDataset/train/',
+    'train_info':   '/content/yolact/RGBDataset/train/_annotations.coco.json',
+
+    'valid_images': '/content/yolact/RGBDataset/valid/',
+    'valid_info':   '/content/yolact/RGBDataset/valid/_annotations.coco.json',
+
+    'has_gt': True,
+    'class_names': RGB_CLASSES,
 })
 
 coco2014_dataset = dataset_base.copy({
@@ -657,8 +670,8 @@ yolact_base_config = coco_base_config.copy({
     'name': 'yolact_base',
 
     # Dataset stuff
-    'dataset': coco2017_dataset,
-    'num_classes': len(coco2017_dataset.class_names) + 1,
+    'dataset': my_custom_dataset,
+    'num_classes': len(my_custom_dataset.class_names) + 1,
 
     # Image Size
     'max_size': 550,
