@@ -131,11 +131,11 @@ dataset_base = Config({
 my_custom_dataset = dataset_base.copy({
     'name': 'RGB Dataset',
 
-    'train_images': '/content/yolact/RGBDataset/train/',
-    'train_info':   '/content/yolact/RGBDataset/train/_annotations.coco.json',
+    'train_images': '/kaggle/working/yolact/RGBDataset/train/',
+    'train_info':   '/kaggle/working/yolact/RGBDataset/train/_annotations.coco.json',
 
-    'valid_images': '/content/yolact/RGBDataset/valid/',
-    'valid_info':   '/content/yolact/RGBDataset/valid/_annotations.coco.json',
+    'valid_images': '/kaggle/working/yolact/RGBDataset/valid/',
+    'valid_info':   '/kaggle/working/yolact/RGBDataset/valid/_annotations.coco.json',
 
     'has_gt': True,
     'class_names': RGB_CLASSES,
